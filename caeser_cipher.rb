@@ -12,11 +12,9 @@
 # Parameters:   message: (string) the string to encrypt
 #               shift_factor: (int) number each character shifts to the right
 # Returns:      (string) the encrypted string
-#
-def caeser_cipher message, shift_factor
+def self.caeser_cipher(message, shift_factor = 0)
   message_encrypted = message.clone
-  position = 0  # position in message_encrypted
-  message_encrypted.each_char do |char|
+  message_encrypted.each_char.with_index do |char, index|
     code = char.ord
     code_new = 0
     set_size = 26
@@ -42,18 +40,20 @@ def caeser_cipher message, shift_factor
       valid_char = false
     end
 
-    if valid_char == true
+    if valid_char
       code_shifted = code + shift_factor
       if code_shifted < lower_bound
-        code_new = upper_bound - (((lower_bound -1) - code_shifted) % set_size)
+        # accounts for a shift greater than the set size
+        code_new = upper_bound - (((lower_bound - 1) - code_shifted) % set_size)
       elsif code_shifted > upper_bound
+        # accounts for a shift greater than the set size
         code_new = lower_bound + ((code_shifted - (upper_bound + 1)) % set_size)
       else
         code_new = code_shifted
       end
-      message_encrypted[position] = code_new.chr
+      # replace the original character with the shifted one
+      message_encrypted[index] = code_new.chr
     end
-    position += 1
   end
   return message_encrypted
 end

@@ -6,7 +6,7 @@ Each project consists of a single method to be designed according to the specifi
 
 Each project also includes several other helper methods that either facilitate creating either test code, or the objects used in the main method (for example, to create the dictionary array in substrings)
 
-## Caaser Cipher
+## Caeser Cipher
 
 Returns an encrypted version of the input string.
 Encryption is done by increasing (or decreasing) each alpha-numeric
@@ -40,7 +40,7 @@ earliest-occurring set of buy/sell dates.
 ## Substrings
 
 Returns a Hash containing Strings (keys), and a count for each (values).
-The strings consist of entries from a given dictionary (Array) that match 
+The strings consist of entries from a given dictionary (Array) that match
 ( either partially or fully) the words contained in the input (String).  
 The count is number of times each dictionary entry finds within the input.
 Only entries with a count greater than 0 are returned.
